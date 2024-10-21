@@ -10,4 +10,4 @@ Route::post('/login', [RequestController::class, 'login'])->name('login.submit')
 Route::get('/', [ViewController::class, 'showUserMainPage'])->name('userHomePage');
 Route::get('/result', [ViewController::class, 'showUserResultPage'])->name('userResultPage');
 Route::get('/book', [ViewController::class, 'showBookInfoPage'])->name('bookInfoPage');
-Route::get('/article', [ViewController::class, 'showArticleInfoPage'])->name('articleInfo');
+Route::get('/author', [ViewController::class, 'showArticleInfoPage'])->name('articleInfo');
