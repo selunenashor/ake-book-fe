@@ -1,0 +1,21 @@
+@use '../normalize.scss';
+
+.user_header{
+    width: 100%;
+    background-color: #8DA683;
+    position: relative;
+    height: fit-content;
+    padding: 32px 0;
+
+    button{
+        position: absolute;
+        right: 20px;
+        top: 0;
+        bottom: 0;
+        width: 30px;
+    }
+}
+
+.user_content{
+    margin: 0 30vh;
+}
