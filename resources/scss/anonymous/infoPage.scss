@@ -20,6 +20,15 @@
         }
     }
 }
+.favourite{
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+        width: fit-content;
+    }
+}
 .info{
     margin-top: 40px;
     display: grid;

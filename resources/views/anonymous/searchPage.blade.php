@@ -1,11 +1,15 @@
 @extends('layout.user')
 
 @section('scss')
-    @vite('resources/scss/searchPage.scss')
+    @vite('resources/scss/anonymous/searchPage.scss')
 @endsection
 
 @section('title')
     <title>Main Page</title>
+@endsection
+
+@section('username')
+    ptk771
 @endsection
 
 @section('content')

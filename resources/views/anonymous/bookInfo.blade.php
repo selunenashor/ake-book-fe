@@ -1,11 +1,15 @@
 @extends('layout.user')
 
 @section('scss')
-    @vite('resources/scss/infoPage.scss')
+    @vite('resources/scss/anonymous/infoPage.scss')
 @endsection
 
 @section('title')
     <title>Giáo Trình Triết Học Marx - Lenin</title>
+@endsection
+
+@section('username')
+    ptk771
 @endsection
 
 @section('content')
@@ -17,6 +21,12 @@
                 <button>Tìm kiếm thông thường</button>
             </div>
         </form>
+    </div>
+    <div class="favourite">
+        <button class="unmark">
+            <i class="fa-solid fa-star"></i>
+            Đánh dấu là yêu thích
+        </button>
     </div>
     <div class="info">
         <div class="book_cover">

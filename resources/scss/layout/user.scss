@@ -1,18 +1,59 @@
 @use '../normalize.scss';
 
+$header-height: 60px;
+
 .user_header{
     width: 100%;
     background-color: #8DA683;
     position: relative;
-    height: fit-content;
-    padding: 32px 0;
+    height: $header-height;
+    display: flex;
 
     button{
+        border-radius: 0;
         position: absolute;
-        right: 20px;
+        right: 0;
         top: 0;
         bottom: 0;
-        width: 30px;
+        width: fit-content;
+        height: $header-height;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+}
+
+.user_menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 200px;
+
+    ul {
+        list-style: none;
+        padding: 16px 0;
+        margin: 0;
+        li {
+            padding: 8px 12px;
+
+            &:hover{
+                background-color: #f0f0f0;
+            }
+
+            a {
+                text-decoration: none;
+                color: #333;
+                width: 100%;
+                display: grid;
+                grid-template-columns: 16px auto;
+                gap: 16px
+            }
+        }
     }
 }
 

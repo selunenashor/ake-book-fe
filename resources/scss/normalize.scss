@@ -386,12 +386,13 @@ h2 {
     margin-bottom: 20px;
 }
 
-input {
+input, select {
     width        : 100%;
     padding      : 10px;
     margin       : 10px 0;
     border       : 1px solid #ccc;
     border-radius: 5px;
+    background-color: transparent;
 }
 
 button {
@@ -402,9 +403,20 @@ button {
     border-radius: 5px;
     cursor       : pointer;
 
-    background-color: rgba(#8DA683, 0.5);
+    background-color: #8DA683;
     &:hover {
-        background-color: #8DA683;
+        background-color: #475741;
+    }
+
+    &.marked{
+        border: 1px solid #8DA683;
+        background-color: transparent;
+        color: #8DA683;
+
+        &:hover{
+            background-color: #8DA683;
+            color: white
+        }
     }
 }
 

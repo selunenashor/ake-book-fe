@@ -1,11 +1,15 @@
 @extends('layout.user')
 
 @section('scss')
-    @vite('resources/scss/resultPage.scss')
+    @vite('resources/scss/anonymous/resultPage.scss')
 @endsection
 
 @section('title')
     <title>Kết quả cho ...</title>
+@endsection
+
+@section('username')
+    ptk771
 @endsection
 
 @section('content')

@@ -1,0 +1,21 @@
+.userInfo_container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    gap: 10%;
+    margin-top: 40px;
+
+    &>div{
+        .form-field{
+            &:first-child{
+                margin-top: 0;
+            }
+            margin-top: 12px;
+
+
+        }
+        button {
+            margin-top: 24px;
+        }
+    }
+}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +9,44 @@
     @yield('scss')
     @yield('title')
 </head>
+
 <body>
     <div class="user_header">
-        <button><i class="fa-solid fa-bars"></i></button>
+        <button class="green" id="user-menu">
+            <i class="fa-regular fa-user"></i>
+            @yield('username')
+        </button>
+        <div class="user_menu">
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fa-regular fa-id-badge"></i>
+                        Thông tin cá nhân
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-book"></i>
+                        Danh mục yêu thích
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        Đăng xuất
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
+
     <div class="user_content">
         @yield('content')
     </div>
+
+
+    @yield('script')
+    @vite('resources/js/layout/user.js')
 </body>
+
 </html>

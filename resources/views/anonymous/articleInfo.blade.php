@@ -1,11 +1,15 @@
 @extends('layout.user')
 
 @section('scss')
-    @vite('resources/scss/infoPage.scss')
+    @vite('resources/scss/anonymous/infoPage.scss')
 @endsection
 
 @section('title')
     <title>Nhà văn Nguyễn Nhật Ánh</title>
+@endsection
+
+@section('username')
+    ptk771
 @endsection
 
 @section('content')
@@ -17,6 +21,12 @@
                 <button>Tìm kiếm thông thường</button>
             </div>
         </form>
+    </div>
+    <div class="favourite">
+        <button class="marked">
+            <i class="fa-regular fa-star"></i>
+            Huỷ đánh dấu yêu thích
+        </button>
     </div>
     <div class="info">
         <div class="book_cover">
