@@ -1,0 +1,47 @@
+.userFavorite_container {
+    .content {
+        display              : grid;
+        grid-template-columns: repeat(2, 1fr);
+        width                : 100%;
+        gap                  : 10%;
+        margin-top           : 40px;
+
+        .book-list {
+            display              : grid;
+            grid-template-columns: repeat(4, 1fr);
+            width                : 100%;
+            gap                  : 24px;
+
+            .book {
+
+                .book_cover {
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                .book_name {
+                    text-align: center;
+                }
+            }
+        }
+
+        .author-list {
+            display              : grid;
+            grid-template-columns: repeat(4, 1fr);
+            width                : 100%;
+            gap                  : 24px;
+
+            .author {
+                .avatar {
+                    img {
+                        width: 100%;
+                    }
+                }
+                .author_name {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

@@ -1,7 +1,7 @@
 @extends('layout.user')
 
 @section('scss')
-    @vite('resources/scss/user/userInfo.scss')
+    @vite('resources/scss/user/info.scss')
 @endsection
 
 @section('title')

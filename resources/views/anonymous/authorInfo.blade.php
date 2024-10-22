@@ -29,10 +29,10 @@
         </button>
     </div>
     <div class="info">
-        <div class="book_cover">
-            <img src="https://www.nxbtre.com.vn/Images/Writer/nxbtre_thumb_30552016_085555.jpg" alt="Books Cover">
+        <div class="avatar">
+            <img src="https://www.nxbtre.com.vn/Images/Writer/nxbtre_thumb_30552016_085555.jpg" alt="Avatar">
         </div>
-        <div class="book_info">
+        <div class="author_info">
             <div class="info_tag">
                 <div class="label">Họ tên</div>
                 <div class="value">Nguyễn Nhật Ánh</div>

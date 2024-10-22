@@ -13,4 +13,5 @@ Route::get('/book', [ViewController::class, 'showBookInfoPage'])->name('bookInfo
 Route::get('/author', [ViewController::class, 'showArticleInfoPage'])->name('articleInfo');
 
 Route::get('/userInfo', [ViewController::class, 'showUserInfo'])->name('userInfo');
+Route::get('/userFavorite', [ViewController::class, 'showUserFavorite'])->name('userFavorite');
 

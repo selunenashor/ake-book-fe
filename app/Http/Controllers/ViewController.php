@@ -24,10 +24,14 @@ class ViewController extends Controller
     }
 
     public function showArticleInfoPage(){
-        return view('anonymous.articleInfo');
+        return view('anonymous.authorInfo');
     }
 
     public function showUserInfo(){
         return view('user.info');
+    }
+
+    public function showUserFavorite(){
+        return view('user.favorite');
     }
 }

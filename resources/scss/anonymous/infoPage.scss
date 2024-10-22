@@ -35,12 +35,12 @@
     grid-template-columns: 30% 70%;
     gap: 60px;
 
-    .book_cover{
+    .book_cover, .avatar{
         img {
             width: 100%;
         }
     }
-    .book_info{
+    .book_info, .author_info{
         .info_tag{
             &:first-child{
                 margin-top: 0;

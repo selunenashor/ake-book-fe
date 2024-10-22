@@ -16,6 +16,11 @@
             <i class="fa-regular fa-user"></i>
             @yield('username')
         </button>
+        <div class="homePage">
+            <a href="/">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png" alt="Image" class="logo">
+            </a>
+        </div>
         <div class="user_menu">
             <ul>
                 <li>
