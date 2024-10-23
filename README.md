@@ -52,3 +52,5 @@ Lúc này trên Terminal sẽ hiển thị URL của project (mặc định là 
 |/result|Trang kết quả tìm kiếm|
 |/book|Thông tin sách chi tiết|
 |/author|Thông tin tác giả chi tiết|
+|/userInfo|Thông tin cá nhân người dùng|
+|/userFavorite|Danh mục người dùng yêu thích|
