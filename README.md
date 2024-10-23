@@ -31,14 +31,22 @@ php artisan key:generate
 Về công dụng cụ thể của `APP_KEY`, có thể tham khảo tại link dưới  
 https://viblo.asia/p/app-key-in-laravel-3Q75wOdG5Wb
 
-**5. Build các file cần thiết bằng Vite**
+**5. Tạo database**
+
+> [!NOTE]
+> Mặc dù project không sử dụng đến database, nhưng vẫn phải gen database thì mới chạy được @@ Sẽ tìm cách disbable sau
+```
+php artisan migrate
+```
+
+**6. Build các file cần thiết bằng Vite**
 ```
 npm run build
 ```
 > [!NOTE]
 > Khi chạy bước này sẽ có nhiều **Deprecation Warning** hiện ra, yên tâm là project vẫn chạy ngon (ít nhất là trên máy của tác giả :v)
 
-**6. Khởi chạy project**
+**7. Khởi chạy project**
 ```
 php artisan serve
 ```
