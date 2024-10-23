@@ -51,7 +51,7 @@
 
 
     @yield('script')
-    @vite('resources/js/layout/user.js')
+    @vite('resources/js/layout/userjs.js')
 </body>
 
 </html>
