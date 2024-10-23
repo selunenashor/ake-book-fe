@@ -33,7 +33,6 @@ https://viblo.asia/p/app-key-in-laravel-3Q75wOdG5Wb
 
 **5. Tạo database**
 
-> [!NOTE]
 > Mặc dù project không sử dụng đến database, nhưng vẫn phải gen database thì mới chạy được @@ Sẽ tìm cách disbable sau
 ```
 php artisan migrate
