@@ -18,4 +18,5 @@ Route::get('/userFavorite', [ViewController::class, 'showUserFavorite'])->name('
 
 Route::prefix('admin')->group(function () {
     Route::get('/books', [ViewController::class, 'showAdminBook'])->name('admin.book');
+    Route::get('/book/{id}',[ViewController::class, 'showAdminBookInfo'])->name('admin.bookInfo');
 });

@@ -1,0 +1,50 @@
+.info {
+    margin-top           : 40px;
+    display              : grid;
+    grid-template-columns: 30% 60%;
+    gap                  : 10%;
+
+    .book_cover,
+    .avatar {
+        img {
+            width: 100%;
+        }
+    }
+
+    .book_info,
+    .author_info {
+        .info_tag {
+            &:first-child {
+                margin-top: 0;
+            }
+
+            margin-top           : 16px;
+            display              : grid;
+            grid-template-columns: 30% 70%;
+            font-size            : 20px;
+
+            .label {
+                font-weight: bold;
+            }
+
+            .value {
+                line-height: 1.5;
+                .input-value{
+                    display: none;
+                }
+            }
+        }
+    }
+}
+.action{
+    float: right;
+
+    button{
+        width: fit-content;
+        margin-left: 24px;
+
+    }
+    #view, #confirm{
+        display: none;
+    }
+}

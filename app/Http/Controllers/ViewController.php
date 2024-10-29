@@ -46,4 +46,8 @@ class ViewController extends Controller
     public function showAdminBook(){
         return view('admin.book');
     }
+
+    public function showAdminBookInfo($id){
+        return view('admin.bookInfo');
+    }
 }
