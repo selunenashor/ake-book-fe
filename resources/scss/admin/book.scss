@@ -1,0 +1,68 @@
+.search-field{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    width: 100%;
+    padding: 24px;
+
+    .col{
+        &>div{
+            margin-top: 24px;
+        }
+
+        .input-label{
+            font-weight: bold;
+        }
+        .select-input{
+            .input-zone{
+                display: grid;
+                grid-template-columns: 45% 10% 45%;
+
+                span{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+.result-field{
+    margin-top: 40px;
+    table{
+        width: 100%;
+        thead{
+            background-color: #8DA683;
+            td{
+                text-align: center;
+                font-weight: bold;
+            }
+        }
+        tbody{
+            tr{
+                background-color: #ddd;
+                &:nth-child(2){
+                    background-color: #fff;
+                }
+                td{
+                    text-align: center;
+                    &:last-child{
+                        display: flex;
+                        gap: 16px;
+                        justify-content: center;
+                        button{
+                            width: fit-content;
+
+                        }
+                    }
+                }
+            }
+
+        }
+        td{
+            padding: 16px;
+        }
+    }
+
+}

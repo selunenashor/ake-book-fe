@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/scss/layout/user.scss')
+    @vite('resources/js/app.js')
     @yield('scss')
     @yield('title')
 </head>
