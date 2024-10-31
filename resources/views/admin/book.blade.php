@@ -5,7 +5,7 @@ Quản lí sách
 @endsection
 
 @section('scss')
-@vite('resources/scss/admin/book.scss')
+@vite('resources/scss/admin/managerPage.scss')
 @endsection
 
 @section('content')
@@ -59,7 +59,7 @@ Quản lí sách
                     <td>Giáo trình triết học Marx - Lenin</td>
                     <td>Bộ Giáo dục và Đào tạo</td>
                     <td>
-                        <button class="edit">Sửa</button>
+                        <button class="edit">Xem/Sửa</button>
                         <button class="delete">Xóa</button>
                     </td>
                 </tr>
@@ -68,7 +68,7 @@ Quản lí sách
                     <td>Giáo trình triết học Marx - Lenin</td>
                     <td>Bộ Giáo dục và Đào tạo</td>
                     <td>
-                        <button class="edit">Sửa</button>
+                        <button class="edit">Xem/Sửa</button>
                         <button class="delete">Xóa</button>
                     </td>
                 </tr>
@@ -77,7 +77,7 @@ Quản lí sách
                     <td>Giáo trình triết học Marx - Lenin</td>
                     <td>Bộ Giáo dục và Đào tạo</td>
                     <td>
-                        <button class="edit">Sửa</button>
+                        <button class="edit">Xem/Sửa</button>
                         <button class="delete">Xóa</button>
                     </td>
                 </tr>

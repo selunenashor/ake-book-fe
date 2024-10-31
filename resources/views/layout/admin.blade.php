@@ -19,11 +19,11 @@
             </div>
             <div class="menu-container">
                 <ul>
-                    <li class="selected">
-                        <a href="">Quản lí sách</a>
+                    <li class="<?php if($menu_selected === 1) {echo 'selected';} ?>">
+                        <a href="/admin/books">Quản lí sách</a>
                     </li>
-                    <li>
-                        <a href="">Quản lí tác giả</a>
+                    <li class="<?php if($menu_selected === 2) {echo 'selected';} ?>">
+                        <a href="/admin/authors">Quản lí tác giả</a>
                     </li>
                     <li>
                         <a href="">Đăng xuất</a>

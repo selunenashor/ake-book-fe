@@ -43,11 +43,27 @@ class ViewController extends Controller
         return view('user.favorite');
     }
 
-    public function showAdminBook(){
-        return view('admin.book');
+    public function showAdminBooks(){
+        return view('admin.book', [
+            'menu_selected' => 1
+        ]);
     }
 
     public function showAdminBookInfo($id){
-        return view('admin.bookInfo');
+        return view('admin.bookInfo', [
+            'menu_selected' => 1
+        ]);
+    }
+
+    public function showAuthors(){
+        return view('admin.author',[
+            'menu_selected' => 2
+        ]);
+    }
+
+    public function showAuthorInfo($id){
+        return view('admin.authorInfo',[
+            'menu_selected' => 2
+        ]);
     }
 }
