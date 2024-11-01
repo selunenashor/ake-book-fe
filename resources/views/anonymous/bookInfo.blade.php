@@ -15,10 +15,10 @@
 @section('content')
     <div class="form-container">
         <form class="search-form">
-            <input type="text" name="q" class="search-input">
+            <input type="text" name="q" class="search-input" id="search-input" value="<?php echo $keyword ?? ''?>">
             <div class="buttons">
-                <button>Tìm kiếm theo ngữ nghĩa</button>
-                <button>Tìm kiếm thông thường</button>
+                <button id="searchViaMeaning">Tìm kiếm theo ngữ nghĩa</button>
+                <button id="searchViaKeywords">Tìm kiếm thông thường</button>
             </div>
         </form>
     </div>

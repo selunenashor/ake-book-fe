@@ -23,8 +23,32 @@ class ViewController extends Controller
         return view('anonymous.searchPage');
     }
 
-    public function showResultPage(){
-        return view('anonymous.resultPage');
+    public function showResultPage(Request $request){
+        $keyword = $request->query('keyword');
+        $response = $this->request_controller->userSearch($keyword);
+        if($response->status() === 200){
+            $data = json_decode($response->getContent(), true);
+            if ($data["data"]["totalItems"] == 1){
+                if (is_null($data["data"]["author"])){
+                    return view('anonymous.bookInfo',[
+                        'data' => $data["data"]["bookDetail"],
+                        'keyword' => $keyword
+                    ]);
+                }
+                else{
+                    return view('anonymous.authorInfo',[
+                        'data' => $data["data"]["author"],
+                        'keyword' => $keyword
+                    ]);
+                }
+            }
+            else{
+                return view('anonymous.resultPage', [
+                    'data' => $data["data"],
+                    'keyword' => $keyword
+                ]);
+            }
+        }
     }
 
     public function showBookInfoPage(){
