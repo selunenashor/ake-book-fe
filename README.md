@@ -38,14 +38,27 @@ https://viblo.asia/p/app-key-in-laravel-3Q75wOdG5Wb
 php artisan migrate
 ```
 
-**6. Build các file cần thiết bằng Vite**
+**6. Thay đổi API server address**
+
+Trong file `.env`, thay đổi giá trị của biến `API_SERVER`. Nếu để trống thì khi khởi chạy sẽ chọn API server mặc định là `127.0.0.1:8000`
+
+Có thể khai báo bằng IP và port
+```
+API_SERVER=192.168.1.1:8000
+```
+hoặc bằng tên miền
+```
+API_SERVER=https://example.com
+```
+
+**7. Build các file cần thiết bằng Vite**
 ```
 npm run build
 ```
 > [!NOTE]
 > Khi chạy bước này sẽ có nhiều **Deprecation Warning** hiện ra, yên tâm là project vẫn chạy ngon (ít nhất là trên máy của tác giả :v)
 
-**7. Khởi chạy project**
+**8. Khởi chạy project**
 ```
 php artisan serve
 ```

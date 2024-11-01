@@ -15,10 +15,10 @@
 @section('content')
     <div class="form-container">
         <form class="search-form">
-            <input type="text" name="q" class="search-input">
+            <input type="text" name="q" class="search-input" id="search-input" value="<?php echo $keyword ?? ''?>">
             <div class="buttons">
-                <button>Tìm kiếm theo ngữ nghĩa</button>
-                <button>Tìm kiếm thông thường</button>
+                <button id="searchViaMeaning">Tìm kiếm theo ngữ nghĩa</button>
+                <button id="searchViaKeywords">Tìm kiếm thông thường</button>
             </div>
         </form>
     </div>
@@ -33,99 +33,26 @@
             </select>
         </div>
         <div class="result">
-            <button>
-                <div class="book">
-                    <div class="book_cover">
-                        <img src="https://images.sachquocgia.vn/Picture/2024/3/21/image-20240321142038119.jpg" alt="Books Cover">
-                    </div>
-                    <div class="book_name">
-                        Tên sách x3.14
-                    </div>
-                </div>
-            </button>
-            <button>
-                <div class="book">
-                    <div class="book_cover">
-                        <img src="https://images.sachquocgia.vn/Picture/2024/3/21/image-20240321142038119.jpg" alt="Books Cover">
-                    </div>
-                    <div class="book_name">
-                        Tên sách x3.14
-                    </div>
-                </div>
-            </button><button>
-                <div class="book">
-                    <div class="book_cover">
-                        <img src="https://images.sachquocgia.vn/Picture/2024/3/21/image-20240321142038119.jpg" alt="Books Cover">
-                    </div>
-                    <div class="book_name">
-                        Tên sách x3.14
-                    </div>
-                </div>
-            </button><button>
-                <div class="book">
-                    <div class="book_cover">
-                        <img src="https://images.sachquocgia.vn/Picture/2024/3/21/image-20240321142038119.jpg" alt="Books Cover">
-                    </div>
-                    <div class="book_name">
-                        Tên sách x3.14
-                    </div>
-                </div>
-            </button><button>
-                <div class="book">
-                    <div class="book_cover">
-                        <img src="https://images.sachquocgia.vn/Picture/2024/3/21/image-20240321142038119.jpg" alt="Books Cover">
-                    </div>
-                    <div class="book_name">
-                        Tên sách x3.14
-                    </div>
-                </div>
-            </button><button>
-                <div class="book">
-                    <div class="book_cover">
-                        <img src="https://images.sachquocgia.vn/Picture/2024/3/21/image-20240321142038119.jpg" alt="Books Cover">
-                    </div>
-                    <div class="book_name">
-                        Tên sách x3.14
-                    </div>
-                </div>
-            </button><button>
-                <div class="book">
-                    <div class="book_cover">
-                        <img src="https://images.sachquocgia.vn/Picture/2024/3/21/image-20240321142038119.jpg" alt="Books Cover">
-                    </div>
-                    <div class="book_name">
-                        Tên sách x3.14
-                    </div>
-                </div>
-            </button><button>
-                <div class="book">
-                    <div class="book_cover">
-                        <img src="https://images.sachquocgia.vn/Picture/2024/3/21/image-20240321142038119.jpg" alt="Books Cover">
-                    </div>
-                    <div class="book_name">
-                        Tên sách x3.14
-                    </div>
-                </div>
-            </button><button>
-                <div class="book">
-                    <div class="book_cover">
-                        <img src="https://images.sachquocgia.vn/Picture/2024/3/21/image-20240321142038119.jpg" alt="Books Cover">
-                    </div>
-                    <div class="book_name">
-                        Tên sách x3.14
-                    </div>
-                </div>
-            </button><button>
-                <div class="book">
-                    <div class="book_cover">
-                        <img src="https://images.sachquocgia.vn/Picture/2024/3/21/image-20240321142038119.jpg" alt="Books Cover">
-                    </div>
-                    <div class="book_name">
-                        Tên sách x3.14
-                    </div>
-                </div>
-            </button>
-
+            <?php
+                foreach ($data['data'] as $book) {
+            ?>
+                    <button>
+                        <div class="book">
+                            <div class="book_cover">
+                                <img src="data:image/png;base64,<?php echo $book['image']?>" alt="Books Cover">
+                            </div>
+                            <div class="book_name">
+                                <?php echo $book['title'] ?>
+                            </div>
+                        </div>
+                    </button>
+            <?php
+                }
+            ?>
         </div>
     </div>
+@endsection
+
+@section('script')
+
 @endsection

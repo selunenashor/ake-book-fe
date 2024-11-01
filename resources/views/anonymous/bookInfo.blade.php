@@ -15,10 +15,10 @@
 @section('content')
     <div class="form-container">
         <form class="search-form">
-            <input type="text" name="q" class="search-input">
+            <input type="text" name="q" class="search-input" id="search-input" value="<?php echo $keyword ?? ''?>">
             <div class="buttons">
-                <button>Tìm kiếm theo ngữ nghĩa</button>
-                <button>Tìm kiếm thông thường</button>
+                <button id="searchViaMeaning">Tìm kiếm theo ngữ nghĩa</button>
+                <button id="searchViaKeywords">Tìm kiếm thông thường</button>
             </div>
         </form>
     </div>
@@ -30,44 +30,66 @@
     </div>
     <div class="info">
         <div class="book_cover">
-            <img src="https://images.sachquocgia.vn/Picture/2024/3/21/image-20240321142038119.jpg" alt="Books Cover">
+            <img src="data:image/png;base64,<?php echo $data['image']?>" alt="Books Cover">
         </div>
         <div class="book_info">
             <div class="info_tag">
                 <div class="label">Tên sách</div>
-                <div class="value">Giáo trình Triết học Marx - Lenin</div>
+                <div class="value"><?php echo $data['title']?></div>
             </div>
             <div class="info_tag">
                 <div class="label">Tác giả</div>
-                <div class="value">Bộ Giáo Dục và Đào Tạo</div>
-            </div>
-            <div class="info_tag">
-                <div class="label">Quốc gia</div>
-                <div class="value">Việt Nam</div>
+                <div class="value"></div>
             </div>
             <div class="info_tag">
                 <div class="label">Ngôn ngữ</div>
-                <div class="value">Tiếng Việt</div>
-            </div>
-            <div class="info_tag">
-                <div class="label">Chủ đề</div>
-                <div class="value">Triết học</div>
+                <div class="value"><?php echo $data['language']?></div>
             </div>
             <div class="info_tag">
                 <div class="label">Thể loại</div>
-                <div class="value">Giáo trình</div>
+                <div class="value">
+                    <?php
+                        $c = count($data['genres']);
+                        $string = "";
+                        foreach ($data['genres'] as $genre) {
+                            $string .= $genre;
+                            $c-=1;
+                            if ($c!==0){
+                                $string .= ", ";
+                            }
+                        }
+                        echo $string;
+                    ?>
+                </div>
+            </div>
+            <div class="info_tag">
+                <div class="label">Phân loại</div>
+                <div class="value">
+                    <?php
+                        $c = count($data['categories']);
+                        $string = "";
+                        foreach ($data['categories'] as $category) {
+                            $string .= $category;
+                            $c-=1;
+                            if ($c!==0){
+                                $string .= ", ";
+                            }
+                        }
+                        echo $string;
+                    ?>
+                </div>
             </div>
             <div class="info_tag">
                 <div class="label">Nhà xuất bản</div>
-                <div class="value">Nhà xuất bản Chính trị quốc gia Sự thật</div>
+                <div class="value"><?php echo $data['publisher'] ?></div>
             </div>
             <div class="info_tag">
-                <div class="label">Năm phát hành</div>
-                <div class="value">2019</div>
+                <div class="label">Thời gian phát hành</div>
+                <div class="value"><?php echo $data['publicationTime']?></div>
             </div>
             <div class="info_tag">
                 <div class="label">Số trang</div>
-                <div class="value">500</div>
+                <div class="value"><?php echo $data['totalPages']?></div>
             </div>
         </div>
     </div>

@@ -36,4 +36,17 @@ class RequestController extends Controller
         }
 
     }
+    public function userSearch($keyword){
+        $response = Http::get($this->server . '/api/books/search?keyword=' . $keyword);
+
+        $statusCode = $response->status();
+        if ($statusCode === 200) {
+            return response()->json([
+                'data' => $response->json()
+            ], 200);
+        } else {
+            return response()->json(['msg' => "An error occurred"], 500);
+        }
+
+    }
 }
