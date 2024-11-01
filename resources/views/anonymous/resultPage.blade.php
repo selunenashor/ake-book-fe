@@ -54,5 +54,5 @@
 @endsection
 
 @section('script')
-    @vite('resources/js/anonymous/searchjs.js')
+
 @endsection

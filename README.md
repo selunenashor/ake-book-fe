@@ -51,15 +51,14 @@ hoặc bằng tên miền
 API_SERVER=https://example.com
 ```
 
-
-**6. Build các file cần thiết bằng Vite**
+**7. Build các file cần thiết bằng Vite**
 ```
 npm run build
 ```
 > [!NOTE]
 > Khi chạy bước này sẽ có nhiều **Deprecation Warning** hiện ra, yên tâm là project vẫn chạy ngon (ít nhất là trên máy của tác giả :v)
 
-**7. Khởi chạy project**
+**8. Khởi chạy project**
 ```
 php artisan serve
 ```
