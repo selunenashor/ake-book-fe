@@ -20,4 +20,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/book/{id}',[ViewController::class, 'showAdminBookInfo'])->name('admin.bookInfo');
     Route::get('/authors',[ViewController::class,'showAuthors'])->name('admin.author');
     Route::get('/author/{id}',[ViewController::class,'showAuthorInfo'])->name('admin.authorInfo');
+
+    Route::post('/author',[RequestController::class, 'addAuthor'])->name('admin.addAuthor');
 });

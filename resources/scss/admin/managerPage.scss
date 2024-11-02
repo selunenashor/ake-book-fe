@@ -28,6 +28,14 @@
         }
     }
 }
+.add-author{
+    display: flex;
+    button{
+        width: fit-content;
+        margin-left: auto;
+        padding: 12px 16px;
+    }
+}
 .result-field{
     margin-top: 40px;
     table{
@@ -51,10 +59,9 @@
                         display: flex;
                         gap: 16px;
                         justify-content: center;
-                        button{
-                            width: fit-content;
-
-                        }
+                    }
+                    a{
+                        width: fit-content;
                     }
                 }
             }

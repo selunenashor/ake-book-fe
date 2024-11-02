@@ -22,6 +22,11 @@ Quản lí sách
         <div class="col">
         </div>
     </div>
+    <div class="add-author">
+        <button id="add-author-button" data-bs-toggle="modal" data-bs-target="#addAuthorModal">
+            Thêm tác giả...
+        </button>
+    </div>
     <div class="result-field">
         <table>
             <thead>
@@ -30,35 +35,113 @@ Quản lí sách
                 <td></td>
             </thead>
             <tbody>
+                @foreach ($data as $item)
                 <tr>
-                    <td>1</td>
-                    <td>Nguyễn Nhật Ánh</td>
                     <td>
-                        <button class="edit">Xem/Sửa</button>
-                        <button class="delete">Xóa</button>
+                        <?php echo $item['id'] ?? ''?>
+                    </td>
+                    <td>
+                        <?php echo $item['name'] ?? ''?>
+                    </td>
+                    <td>
+                        <a class="edit button">Xem/Sửa</a>
+                        <a class="delete button">Xóa</a>
                     </td>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Nguyễn Nhật Ánh</td>
-                    <td>
-                        <button class="edit">Xem/Sửa</button>
-                        <button class="delete">Xóa</button>
-                    </td>
-                </tr><tr>
-                    <td>1</td>
-                    <td>Nguyễn Nhật Ánh</td>
-                    <td>
-                        <button class="edit">Xem/Sửa</button>
-                        <button class="delete">Xóa</button>
-                    </td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
 </div>
+<div class="modal fade" id="addAuthorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel"><b>Thêm tác giả</b></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="error modal-body"></div>
+                <div class="modal-body">
+                    <div class="modal-field">
+                        <label for="name"><b>Họ tên</b></label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+                    <div class="modal-field">
+                        <label for="stageName"><b>Bí danh</b></label>
+                        <input type="text" name="stageName" id="stageName">
+                    </div>
+                    <div class="modal-field">
+                        <label for="nationality"><b>Quốc tịch</b></label>
+                        <input type="text" name="nationality" id="nationality">
+                    </div>
+                    <div class="modal-field">
+                        <label for="birthDate"><b>Ngày sinh</b></label>
+                        <input type="date" name="birthDate" id="birthDate">
+                    </div>
+                    <div class="modal-field">
+                        <label for="birthPlace"><b>Nơi sinh</b></label>
+                        <input type="text" name="birthPlace" id="birthPlace">
+                    </div>
+                    <div class="modal-field">
+                        <input type="checkbox" name="isDeath" id="isDeath" style="width: fit-content">
+                        <label for="isDeath">Đã mất</label>
+                    </div>
+                    <div class="modal-field" id="authorDeathDate">
+                        <label for="deathDate"><b>Năm mất</b></label>
+                        <input type="date" name="deathDate" id="deathDate">
+
+                    </div>
+                    <div class="modal-field">
+                        <label for="website"><b>Website</b></label>
+                        <input type="text" name="website" id="website">
+                    </div>
+                    <div class="modal-field">
+                        <label for="description"><b>Mô tả</b></label>
+                        <input type="text" name="description" id="description">
+                    </div>
+                    <div class="modal-field">
+                        <label for="image"><b>Hình ảnh</b></label>
+                        <div id="image-button">
+                            <button  id="urlImage" data-bs-target="#URLImageModal" data-bs-toggle="modal">URL...</button>
+                            <button  id="localImage">Tải tệp lên...</button>
+                        </div>
+                        <input type="text" readonly class="form-control-plaintext" name="image" id="file-name">
+                        <input type="text" readonly class="form-control-plaintext" name="image" id="image-string"
+                            hidden>
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-bs-dismiss="modal">Huỷ</button>
+                    <button id="addAuthorConfirm">Thêm</button>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="modal fade" id="URLImageModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel2"><b>URL</b></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-field">
+                    <label for="urlImage"><b>Nhập URL</b></label>
+                    <input type="text" name="urlImage" id="urlImage">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="urlImageConfirm" data-bs-toggle="modal" data-bs-target="#addAuthorModal">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @endsection
 
 @section('script')
-
+@vite('resources/js/admin/listPagejs.js')
 @endsection

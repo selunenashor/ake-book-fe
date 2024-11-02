@@ -396,6 +396,10 @@ input, select {
     background-color: transparent;
 }
 
+button, a{
+    cursor: pointer;
+}
+
 ul{
     list-style: none;
     padding-left: 0;
@@ -406,7 +410,7 @@ a {
     color: #000000;
 }
 
-button {
+button, a.button {
     width        : 100%;
     padding      : 10px;
     color        : white;
@@ -429,6 +433,24 @@ button {
             color: white
         }
     }
+}
+
+.modal-body{
+    overflow: scroll;
+    max-height: 500px;
+}
+
+#image-button{
+    display: flex;
+    gap: 16px;
+    &>button{
+        width: fit-content;
+    }
+}
+
+.error{
+    font-weight: bold;
+    color:red;
 }
 
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css');

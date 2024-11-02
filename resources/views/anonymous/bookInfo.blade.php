@@ -30,12 +30,12 @@
     </div>
     <div class="info">
         <div class="book_cover">
-            <img src="data:image/png;base64,<?php echo $data['image']?>" alt="Books Cover">
+            <img src="data:image/png;base64,<?php echo $data['image'] ?? ''?>" alt="Books Cover">
         </div>
         <div class="book_info">
             <div class="info_tag">
                 <div class="label">Tên sách</div>
-                <div class="value"><?php echo $data['title']?></div>
+                <div class="value"><?php echo $data['title'] ?? ''?></div>
             </div>
             <div class="info_tag">
                 <div class="label">Tác giả</div>
@@ -43,7 +43,7 @@
             </div>
             <div class="info_tag">
                 <div class="label">Ngôn ngữ</div>
-                <div class="value"><?php echo $data['language']?></div>
+                <div class="value"><?php echo $data['language'] ?? ''?></div>
             </div>
             <div class="info_tag">
                 <div class="label">Thể loại</div>
@@ -81,15 +81,15 @@
             </div>
             <div class="info_tag">
                 <div class="label">Nhà xuất bản</div>
-                <div class="value"><?php echo $data['publisher'] ?></div>
+                <div class="value"><?php echo $data['publisher'] ?? '' ?></div>
             </div>
             <div class="info_tag">
                 <div class="label">Thời gian phát hành</div>
-                <div class="value"><?php echo $data['publicationTime']?></div>
+                <div class="value"><?php echo $data['publicationTime']  ?? ''?></div>
             </div>
             <div class="info_tag">
                 <div class="label">Số trang</div>
-                <div class="value"><?php echo $data['totalPages']?></div>
+                <div class="value"><?php echo $data['totalPages']  ?? ''?></div>
             </div>
         </div>
     </div>
