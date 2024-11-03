@@ -1,4 +1,27 @@
 .info {
+
+    .author_info{
+        &.viewMode{
+            input, .checkBox_tag, .imageInput {
+                display: none;
+            }
+            .plain-value{
+                display: block;
+            }
+        }
+
+        &.editMode{
+            input{
+                display: block;
+            }
+            .plain-value{
+                display: none;
+            }
+            .checkBox_tag,.imageInput{
+                display: grid;
+            }
+        }
+    }
     margin-top           : 40px;
     display              : grid;
     grid-template-columns: 30% 60%;
@@ -31,9 +54,18 @@
 
             .value {
                 line-height: 1.5;
-                .input-value{
-                    display: none;
+            }
+            &.checkBox_tag{
+                .value{
+                    display: flex;
+                    gap: 16px;
+                    input{
+                        width: fit-content;
+                    }
                 }
+            }
+            &.hidden_tag{
+                display: none;
             }
         }
     }

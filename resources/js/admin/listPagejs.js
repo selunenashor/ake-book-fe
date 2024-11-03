@@ -76,7 +76,7 @@ buttonAuthorConfirm.addEventListener('click', function() {
     };
 
     // Send a POST request
-    fetch('/admin/author', {
+    fetch('/admin/author/create', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

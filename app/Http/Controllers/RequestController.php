@@ -84,4 +84,25 @@ class RequestController extends Controller
             return response()->json([], 500);
         }
     }
+    public function editAuthor(Request $request){
+        $response = Http::put($this->server . '/api/admin/authors',[
+            'id' => $request->input('id'),
+            'name' => $request->input('name'),
+            'stageName' => $request->input('stageName') ?? null,
+            'birthDate'=> $request->input('birthDate') ?? null,
+            'deathDate' => $request->input('deathDate') ?? null,
+            'birthPlace' => $request->input('birthPlace') ?? null,
+            'nationality' => $request->input('nationality') ?? null,
+            'website' => $request->input('website') ?? null,
+            'description' => $request->input('description') ?? null,
+            'image' => $request->input('image') ?? null
+        ]);
+
+        if($response->status() === 200){
+            return response()->json([], 200);
+        }
+        else{
+            return response()->json([], 500);
+        }
+    }
 }

@@ -44,8 +44,8 @@ Quản lí sách
                         <?php echo $item['name'] ?? ''?>
                     </td>
                     <td>
-                        <a class="edit button">Xem/Sửa</a>
-                        <a class="delete button">Xóa</a>
+                        <a href="/admin/author/<?php echo $item['id'] ?>" class="edit button">Xem/Sửa</a>
+                        <button class="delete button" data-bs-target="#DeleteAuthorModal" data-bs-toggle="modal">Xóa</button>
                     </td>
                 </tr>
                 @endforeach
@@ -54,7 +54,6 @@ Quản lí sách
     </div>
 </div>
 <div class="modal fade" id="addAuthorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -64,7 +63,7 @@ Quản lí sách
                 <div class="error modal-body"></div>
                 <div class="modal-body">
                     <div class="modal-field">
-                        <label for="name"><b>Họ tên</b></label>
+                        <label for="name"><b>Họ tên <span class="required">(*)</span></b></label>
                         <input type="text" name="name" id="name" required>
                     </div>
                     <div class="modal-field">
@@ -134,6 +133,25 @@ Quản lí sách
             </div>
             <div class="modal-footer">
                 <button id="urlImageConfirm" data-bs-toggle="modal" data-bs-target="#addAuthorModal">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="DeleteAuthorModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel3" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel2"><b>URL</b></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-field">
+                    <label for="urlImage"><b>Bạn chắc chắn muốn xoá thông tin tác giả này chứ</b></label>
+                    <input type="text" name="urlImage" id="urlImage" readonly value="">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="DeleteAuthorConfirm" class="btn btn-danger" data-bs-dismiss="modal">Xác nhận</button>
             </div>
         </div>
     </div>
