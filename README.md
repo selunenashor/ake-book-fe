@@ -63,18 +63,3 @@ npm run build
 php artisan serve
 ```
 Lúc này trên Terminal sẽ hiển thị URL của project (mặc định là **127.0.0.1:8000**). Mở Browser và gõ URL là được!
-
-# Route List
-|Route|Nội dung|
-|---|---|
-|/login|Trang login   |
-|/|Trang chính|
-|/result|Trang kết quả tìm kiếm|
-|/book|Thông tin sách chi tiết|
-|/author|Thông tin tác giả chi tiết|
-|/userInfo|Thông tin cá nhân người dùng|
-|/userFavorite|Danh mục người dùng yêu thích|
-|/admin/books|Quản lí sách|
-|/admin/book/{id}|Xem/sửa thông tin 1 sách cụ thể|
-|/admin/authors|Quản lí tác giả|
-|/admin/book/{id}|Xem/sửa thông tin 1 tác giả cụ thể|
