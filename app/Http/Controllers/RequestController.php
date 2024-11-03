@@ -64,6 +64,19 @@ class RequestController extends Controller
         }
     }
 
+    public function getAuthor($id){
+        $response = Http::get($this->server . '/api/admin/authors/' . $id);
+        $statusCode = $response->status();
+        if ($statusCode === 200){
+            return response()->json([
+                'data' => $response->json()
+            ], 200);
+        }
+        else {
+            return response()->json(['msg' => "An error occurred"], 500);
+        }
+    }
+
     public function addAuthor(Request $request){
         $response = Http::post($this->server . '/api/admin/authors',[
             'name' => $request->input('name'),
@@ -102,6 +115,19 @@ class RequestController extends Controller
             return response()->json([], 200);
         }
         else{
+            return response()->json([], 500);
+        }
+    }
+
+    public function delAuthor($id){
+        $response = Http::delete($this->server . '/api/admin/authors/' . $id);
+        $statusCode = $response->status();
+        if ($statusCode === 200){
+            return response()->json([
+                'data' => $response->json()
+            ], 200);
+        }
+        else {
             return response()->json([], 500);
         }
     }

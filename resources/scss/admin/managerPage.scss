@@ -50,7 +50,7 @@
         tbody{
             tr{
                 background-color: #ddd;
-                &:nth-child(2){
+                &:nth-child(2n){
                     background-color: #fff;
                 }
                 td{

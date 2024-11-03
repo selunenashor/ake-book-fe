@@ -45,7 +45,7 @@ Quản lí sách
                     </td>
                     <td>
                         <a href="/admin/author/<?php echo $item['id'] ?>" class="edit button">Xem/Sửa</a>
-                        <button class="delete button" data-bs-target="#DeleteAuthorModal" data-bs-toggle="modal">Xóa</button>
+                        <button class="delete button btn btn-danger" author-name="<?php echo $item['name'] ?? ''?>" author-id="<?php echo $item['id'] ?? ''?>" data-bs-target="#DeleteAuthorModal" data-bs-toggle="modal">Xóa</button>
                     </td>
                 </tr>
                 @endforeach
@@ -60,7 +60,7 @@ Quản lí sách
                     <h1 class="modal-title fs-5" id="exampleModalLabel"><b>Thêm tác giả</b></h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="error modal-body"></div>
+                <div class="modal-body error" id="error_addAuthor"></div>
                 <div class="modal-body">
                     <div class="modal-field">
                         <label for="name"><b>Họ tên <span class="required">(*)</span></b></label>
@@ -144,14 +144,16 @@ Quản lí sách
                 <h1 class="modal-title fs-5" id="exampleModalToggleLabel2"><b>URL</b></h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <div class="modal-body error" id="error_delAuthor"></div>
             <div class="modal-body">
                 <div class="modal-field">
-                    <label for="urlImage"><b>Bạn chắc chắn muốn xoá thông tin tác giả này chứ</b></label>
-                    <input type="text" name="urlImage" id="urlImage" readonly value="">
+                    <label for="urlImage"><b>Bạn chắc chắn muốn xoá tác giả <span style="color: red" id="delAuthorName"></span> chứ?</b></label>
+                    <input type="text" readonly class="form-control-plaintext" name="image" id="idAuthorDelete"
+                            hidden>
                 </div>
             </div>
             <div class="modal-footer">
-                <button id="DeleteAuthorConfirm" class="btn btn-danger" data-bs-dismiss="modal">Xác nhận</button>
+                <button id="DeleteAuthorConfirm" class="btn btn-danger">Xác nhận</button>
             </div>
         </div>
     </div>
@@ -161,5 +163,5 @@ Quản lí sách
 @endsection
 
 @section('script')
-@vite('resources/js/admin/listPagejs.js')
+@vite('resources/js/admin/authorListjs.js')
 @endsection

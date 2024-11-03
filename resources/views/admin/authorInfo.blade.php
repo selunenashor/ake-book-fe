@@ -11,75 +11,76 @@ Tên tác giả
 @section('content')
 <div class="info">
     <div class="avatar">
-        <img src="https://www.nxbtre.com.vn/Images/Writer/nxbtre_thumb_30552016_085555.jpg" alt="No Avatar">
+        <img src="<?php echo $data['image'] ?? '' ?>" alt="No Avatar">
     </div>
     <div class="author_info viewMode">
         <div class="info_tag error"></div>
         <div class="info_tag hidden_tag">
             <div class="value">
-                <input type="text" class="input-value" id="id" value="5">
+                <input type="text" class="input-value" id="id" value="<?= $data['id']?>">
             </div>
         </div>
         <div class="info_tag">
             <div class="label">Họ tên</div>
             <div class="value">
-                <div class="plain-value">Nguyễn Nhật Ánh</div>
-                <input type="text" class="input-value" id="name" value="Nguyễn Nhật Ánh">
+                <div class="plain-value"><?php echo $data['name'] ?></div>
+                <input type="text" class="input-value" id="name" value="<?php echo $data['name'] ?>">
             </div>
         </div>
         <div class="info_tag">
             <div class="label">Bí danh</div>
             <div class="value">
-                <div class="plain-value"></div>
-                <input type="text" class="input-value" id="stageName" value="">
+                <div class="plain-value"><?php echo $data['stageName'] ?? '' ?></div>
+                <input type="text" class="input-value" id="stageName" value="<?php echo $data['stageName'] ?? '' ?>">
             </div>
         </div>
         <div class="info_tag">
             <div class="label">Quốc tịch</div>
             <div class="value">
-                <div class="plain-value">Việt Nam</div>
-                <input type="text" class="input-value" id="nationality" value="Việt Nam">
+                <div class="plain-value"><?php echo $data['nationality'] ?? '' ?></div>
+                <input type="text" class="input-value" id="nationality" value="<?php echo $data['nationality'] ?? '' ?>">
             </div>
         </div>
         <div class="info_tag">
-            <div class="label">Năm sinh</div>
+            <div class="label">Ngày sinh</div>
             <div class="value">
-                <div class="plain-value"></div>
-                <input type="date" class="input-value" id="birthDate" value="">
+                <div class="plain-value"><?php echo $data['birthDate'] ?? '' ?></div>
+                <input type="date" class="input-value" id="birthDate" value="<?php echo $data['birthDate'] ?? '' ?>">
             </div>
         </div>
         <div class="info_tag">
             <div class="label">Nơi sinh</div>
             <div class="value">
-                <div class="plain-value">Việt Nam</div>
-                <input type="text" class="input-value" id="birthPlace" value="Việt Nam">
+                <div class="plain-value"><?php echo $data['birthPlace'] ?? '' ?></div>
+                <input type="text" class="input-value" id="birthPlace" value="<?php echo $data['birthPlace'] ?? '' ?>">
             </div>
         </div>
         <div class="info_tag checkBox_tag">
             <div class="label"></div>
             <div class="value">
-                <input type="checkbox" class="input-value" id="isDeath" for="isDeathChecked">
+                <input type="checkbox" class="input-value" id="isDeath" for="isDeathChecked" <?php if ($data['deathDate'] !== null) {echo 'checked';}?>>
                 <label for="isDeath">Đã mất</label>
             </div>
         </div>
         <div class="info_tag" id="isDeathChecked">
             <div class="label">Năm mất</div>
             <div class="value">
-                <input type="date" class="input-value" id="deathDate" value="">
+                <div class="plain-value"><?php echo $data['deathDate'] ?? '' ?></div>
+                <input type="date" class="input-value" id="deathDate" value="<?php echo $data['deathDate'] ?? '' ?>">
             </div>
         </div>
         <div class="info_tag">
             <div class="label">Website</div>
             <div class="value">
-                <div class="plain-value">nguyennhatanh.com</div>
-                <input type="text" class="input-value" id="website" value="nguyennhatanh.com">
+                <div class="plain-value"><?php echo $data['website'] ?? '' ?></div>
+                <input type="text" class="input-value" id="website" value="<?php echo $data['website'] ?? '' ?>">
             </div>
         </div>
         <div class="info_tag">
             <div class="label">Mô tả</div>
             <div class="value">
-                <div class="plain-value">Nguyễn Nhật Ánh</div>
-                <input type="text" class="input-value" id="description" value="Nguyễn Nhật Ánh">
+                <div class="plain-value"><?php echo $data['description'] ?? '' ?></div>
+                <input type="text" class="input-value" id="description" value="<?php echo $data['description'] ?? '' ?>">
             </div>
         </div>
         <div class="info_tag imageInput">
@@ -96,7 +97,7 @@ Tên tác giả
             <div class="value">
                 <input type="text" readonly class="form-control-plaintext" name="image" id="file-name">
                 <input type="text" readonly class="form-control-plaintext" name="image" id="image-string"
-                    hidden>
+                    hidden value="<?php echo $data['image'] ?? '' ?>">
                 <input type="file" id="fileInput" accept="image/*" style="display: none;">
             </div>
         </div>
@@ -129,5 +130,5 @@ Tên tác giả
 @endsection
 
 @section('script')
-@vite('resources/js/admin/infoPagejs.js')
+@vite('resources/js/admin/authorPagejs.js')
 @endsection

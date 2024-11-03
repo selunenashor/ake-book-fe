@@ -91,8 +91,13 @@ class ViewController extends Controller
     }
 
     public function showAuthorInfo($id){
+        $response = $this->request_controller->getAuthor($id);
+        if ($response->status() === 200){
+            $data = json_decode($response->getContent(), true);
+        }
         return view('admin.authorInfo',[
-            'menu_selected' => 2
+            'menu_selected' => 2,
+            'data' => $data['data']
         ]);
     }
 }
