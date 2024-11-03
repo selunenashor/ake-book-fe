@@ -1,7 +1,7 @@
 @extends('layout.admin')
 
 @section('title')
-Quản lí sách
+Quản lí tác giả
 @endsection
 
 @section('scss')
@@ -9,7 +9,7 @@ Quản lí sách
 @endsection
 
 @section('content')
-<div class="manage-book-container">
+<div class="manage-author-container">
     <div class="search-field">
         <div class="col">
             <div class="text-input">

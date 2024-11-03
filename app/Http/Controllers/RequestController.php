@@ -23,7 +23,7 @@ class RequestController extends Controller
     }
 
     public function getAllBooks(){
-        $response = Http::get($this->server . '/api/admin/book');
+        $response = Http::get($this->server . '/api/admin/books');
 
         $statusCode = $response->status();
 
@@ -34,7 +34,28 @@ class RequestController extends Controller
         } else {
             return response()->json(['msg' => "An error occurred"], 500);
         }
+    }
 
+    public function addBook(Request $request){
+        $response = Http::post($this->server . '/api/admin/books',[
+            'title' => $request->input('title'),
+            'authorIds' => $request->input('authorIds'),
+            'genres'=> $request->input('genres'),
+            'publishedAt' => $request->input('publishedAt'),
+            'publisher' => $request->input('publisher'),
+            'totalPages' => $request->input('totalPages'),
+            'categories' => $request->input('categories'),
+            'language' => $request->input('language'),
+            'description' => $request->input('description'),
+            'image' => $request->input('image')
+        ]);
+
+        if($response->status() === 200){
+            return response()->json([], 200);
+        }
+        else{
+            return response()->json(['error' => $response->status()], 500);
+        }
     }
     public function userSearch($keyword){
         $response = Http::get($this->server . '/api/books/search?keyword=' . $keyword);
