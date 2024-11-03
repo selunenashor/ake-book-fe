@@ -1,8 +1,8 @@
 .info {
 
-    .author_info{
+    .author_info, .book_info{
         &.viewMode{
-            input, .checkBox_tag, .imageInput {
+            input, select, .checkBox_tag, .imageInput {
                 display: none;
             }
             .plain-value{
@@ -11,7 +11,7 @@
         }
 
         &.editMode{
-            input{
+            input, select{
                 display: block;
             }
             .plain-value{

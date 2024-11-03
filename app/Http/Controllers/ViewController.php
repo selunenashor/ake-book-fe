@@ -85,8 +85,19 @@ class ViewController extends Controller
     }
 
     public function showAdminBookInfo($id){
+        $response1 = $this->request_controller->getBook($id);
+        if ($response1->status() === 200){
+            $data1 = json_decode($response1->getContent(), true);
+        }
+
+        $response2 = $this->request_controller->getAllAuthors();
+        if ($response2->status() === 200){
+            $data2 = json_decode($response2->getContent(), true);
+        }
         return view('admin.bookInfo', [
-            'menu_selected' => 1
+            'menu_selected' => 1,
+            'data' => $data1['data'],
+            'author' => $data2['data']
         ]);
     }
 

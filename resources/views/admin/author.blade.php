@@ -163,5 +163,5 @@ Quản lí tác giả
 @endsection
 
 @section('script')
-@vite('resources/js/admin/authorListjs.js')
+@vite('resources/js/admin/authorjs.js')
 @endsection

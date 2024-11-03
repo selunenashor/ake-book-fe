@@ -67,7 +67,8 @@ Quản lí sách
                     <td><?= $item['authors'][0]['name'] ?></td>
                     <td>
                         <a href="/admin/book/<?php echo $item['id'] ?>" class="edit button">Xem/Sửa</a>
-                        <button class="delete btn btn-danger">Xóa</button>
+                        <button class="delete button btn btn-danger" book-title="<?php echo $item['title'] ?? ''?>" book-id="<?php echo $item['id'] ?? ''?>"
+                            author-name="<?= $item['authors'][0]['name'] ?>" data-bs-target="#DeleteBookModal" data-bs-toggle="modal">Xóa</button>
                     </td>
                 </tr>
                 @endforeach
@@ -112,11 +113,6 @@ Quản lí sách
                 <div class="modal-field">
                     <label for="totalPages"><b>Số trang <span class="required">(*)</span></b></label>
                     <input type="number" name="totalPages" id="totalPages">
-                </div>
-                <div class="modal-field">
-                    <label for="categories"><b>Phân loại <span class="required">(*)</span></b></label>
-                    <label>Nếu có nhiều phân loại, phân cách bằng dấu phẩy (ví dụ: phân loại 1, phân loại 2)</label>
-                    <input type="text" name="categories" id="categories">
                 </div>
                 <div class="modal-field">
                     <label for="language"><b>Ngôn ngữ <span class="required">(*)</span></b></label>
@@ -164,8 +160,29 @@ Quản lí sách
         </div>
     </div>
 </div>
+<div class="modal fade" id="DeleteBookModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel3" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel2"><b>URL</b></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body error" id="error_delBook"></div>
+            <div class="modal-body">
+                <div class="modal-field">
+                    <label for="urlImage"><b>Bạn chắc chắn muốn xoá cuốn sách <span style="color: red" id="delBookName"></span> của tác giả <span style="color: red" id="delBookAuthor"></span> chứ?</b></label>
+                    <input type="text" readonly class="form-control-plaintext" name="image" id="idBookDelete"
+                            hidden>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="DeleteBookConfirm" class="btn btn-danger">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('script')
-    @vite('resources/js/admin/bookListjs.js')
+    @vite('resources/js/admin/bookjs.js')
 @endsection

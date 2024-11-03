@@ -25,6 +25,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/author/{id}',[ViewController::class,'showAuthorInfo'])->name('admin.authorInfo');
 
     Route::post('/book/create', [RequestController::class, 'addBook'])->name('admin.addBook');
+    Route::post('/book/edit', [RequestController::class, 'editBook'])->name('admin.editBook');
+    Route::post('/book/delete/{id}', [RequestController::class, 'delBook'])->name('admin.delBook');
 
     Route::post('/author/create',[RequestController::class, 'addAuthor'])->name('admin.addAuthor');
     Route::post('/author/edit',[RequestController::class, 'editAuthor'])->name('admin.editAuthor');

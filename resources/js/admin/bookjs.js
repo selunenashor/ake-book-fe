@@ -5,8 +5,18 @@ const fileInput = document.getElementById('fileInput')
 const imageString = document.getElementById('image-string')
 const buttonBookConfirm = document.getElementById('addBookConfirm')
 const error_addBook = document.querySelector('div#error_addBook')
+const deleteButton = document.querySelectorAll('button.delete')
+const deleteBookID = document.querySelector('input#idBookDelete')
+const deleteBookConfirm = document.querySelector('button#DeleteBookConfirm')
 
 
+deleteButton.forEach(element => {
+    element.addEventListener('click', function(){
+        document.querySelector('span#delBookName').innerHTML = element.getAttribute('book-title')
+        document.querySelector('span#delBookAuthor').innerHTML = element.getAttribute('author-name')
+        deleteBookID.value = element.getAttribute('book-id')
+    })
+});
 
 buttonUrlConfirm.addEventListener('click', function() {
 
@@ -40,7 +50,6 @@ buttonBookConfirm.addEventListener('click', function() {
     const publishedAt_dateTime = document.getElementById('publishedAt').value || null;
     const publisher = document.getElementById('publisher').value || null;
     const totalPages= document.getElementById('totalPages').value || null;
-    const categories_string = document.getElementById('categories').value || null;
     const language = document.getElementById('language').value || null;
     const description = document.getElementById('description').value || null;
     const image = document.getElementById('image-string').value || null;
@@ -79,11 +88,6 @@ buttonBookConfirm.addEventListener('click', function() {
         return
     }
 
-    if (!categories_string){
-        error_addBook.innerHTML = "Phân loại không được để trống"
-        return
-    }
-
     if (!language){
         error_addBook.innerHTML = "Ngôn ngữ không được để trống"
         return
@@ -100,7 +104,6 @@ buttonBookConfirm.addEventListener('click', function() {
     }
 
     const genres = genres_string.split(',').map(item=>item.trim())
-    const categories = categories_string.split(',').map(item=>item.trim())
     const publishedAt_date = new Date(publishedAt_dateTime)
     const publishedAt = Math.floor(publishedAt_date.getTime() / 1000)
     // Create a data object
@@ -111,7 +114,7 @@ buttonBookConfirm.addEventListener('click', function() {
         publishedAt: publishedAt,
         publisher: publisher,
         totalPages: totalPages,
-        categories: categories,
+        categories: [],
         language: language,
         description: description,
         image: image
@@ -140,3 +143,26 @@ buttonBookConfirm.addEventListener('click', function() {
         console.error('Error:', error);
     });
 });
+deleteBookConfirm.addEventListener('click', function(){
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    fetch('/admin/book/delete/' + deleteBookID.value, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken
+        },
+    })
+    .then(response => {
+        if (!response.ok) {
+            document.querySelector('div#error_delBook').innerHTML = "Có lỗi xảy ra!"
+            return
+        }
+        else{
+            window.location.reload()
+        }
+    })
+    .catch(error => {
+        document.querySelector('div#error_delBook').innerHTML = "Có lỗi xảy ra!"
+        return
+    });
+})

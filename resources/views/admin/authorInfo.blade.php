@@ -14,7 +14,7 @@ Tên tác giả
         <img src="<?php echo $data['image'] ?? '' ?>" alt="No Avatar">
     </div>
     <div class="author_info viewMode">
-        <div class="info_tag error"></div>
+        <div class="info_tag error" style="display: block"></div>
         <div class="info_tag hidden_tag">
             <div class="value">
                 <input type="text" class="input-value" id="id" value="<?= $data['id']?>">

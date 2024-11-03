@@ -22,8 +22,36 @@ class RequestController extends Controller
         return self::$instance;
     }
 
+    public function userSearch($keyword){
+        $response = Http::get($this->server . '/api/books/search?keyword=' . $keyword);
+
+        $statusCode = $response->status();
+        if ($statusCode === 200) {
+            return response()->json([
+                'data' => $response->json()
+            ], 200);
+        } else {
+            return response()->json(['msg' => "An error occurred"], 500);
+        }
+
+    }
+
     public function getAllBooks(){
         $response = Http::get($this->server . '/api/admin/books');
+
+        $statusCode = $response->status();
+
+        if ($statusCode === 200) {
+            return response()->json([
+                'data' => $response->json()
+            ], 200);
+        } else {
+            return response()->json(['msg' => "An error occurred"], 500);
+        }
+    }
+
+    public function getBook($id){
+        $response = Http::get($this->server . '/api/admin/books/'.$id);
 
         $statusCode = $response->status();
 
@@ -54,21 +82,44 @@ class RequestController extends Controller
             return response()->json([], 200);
         }
         else{
-            return response()->json(['error' => $response->status()], 500);
+            dd($response);
         }
     }
-    public function userSearch($keyword){
-        $response = Http::get($this->server . '/api/books/search?keyword=' . $keyword);
 
+    public function editBook(Request $request){
+        $response = Http::put($this->server . '/api/admin/books',[
+            'id' => $request->input('id'),
+            'title' => $request->input('title'),
+            'authorIds' => $request->input('authorIds'),
+            'genres'=> $request->input('genres'),
+            'publishedAt' => $request->input('publishedAt'),
+            'publisher' => $request->input('publisher'),
+            'totalPages' => $request->input('totalPages'),
+            'categories' => $request->input('categories'),
+            'language' => $request->input('language'),
+            'description' => $request->input('description'),
+            'image' => $request->input('image')
+        ]);
+
+        if($response->status() === 200){
+            return response()->json([], 200);
+        }
+        else{
+            dd($response);
+        }
+    }
+
+    public function delBook($id){
+        $response = Http::delete($this->server . '/api/admin/books/' . $id);
         $statusCode = $response->status();
-        if ($statusCode === 200) {
+        if ($statusCode === 200){
             return response()->json([
                 'data' => $response->json()
             ], 200);
-        } else {
-            return response()->json(['msg' => "An error occurred"], 500);
         }
-
+        else {
+            dd($response);
+        }
     }
 
     public function getAllAuthors(){
@@ -115,7 +166,7 @@ class RequestController extends Controller
             return response()->json([], 200);
         }
         else{
-            return response()->json([], 500);
+            dd($response);
         }
     }
     public function editAuthor(Request $request){
@@ -136,7 +187,7 @@ class RequestController extends Controller
             return response()->json([], 200);
         }
         else{
-            return response()->json([], 500);
+            dd($response);
         }
     }
 
@@ -149,7 +200,7 @@ class RequestController extends Controller
             ], 200);
         }
         else {
-            return response()->json([], 500);
+            dd($response);
         }
     }
 }

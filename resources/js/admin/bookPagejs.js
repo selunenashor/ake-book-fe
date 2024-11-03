@@ -1,8 +1,7 @@
 const buttonEdit = document.querySelector('#edit')
 const buttonView = document.querySelector('#view')
 const buttonConfirm = document.querySelector('#confirm')
-const authorInfoMode = document.querySelector('.author_info')
-const checkBoxTag = document.querySelectorAll('.checkBox_tag input')
+const authorInfoMode = document.querySelector('.book_info')
 const buttonUrlConfirm = document.getElementById('urlImageConfirm')
 const fileName = document.getElementById('file-name')
 const fileInput = document.getElementById('fileInput')
@@ -11,19 +10,6 @@ const buttonUploadImage = document.getElementById('localImage')
 const image = document.querySelector('.info img')
 const errorDiv = document.querySelector('div.error')
 
-
-checkBoxTag.forEach(element => {
-
-    const forAttribute = element.getAttribute('for')
-    const checkBokRefer = document.querySelector('#' + forAttribute)
-    checkBokRefer.style.display = element.checked ? 'grid' : 'none'
-
-    element.addEventListener('change', function(){
-        const forAttribute = element.getAttribute('for')
-        const checkBokRefer = document.querySelector('#' + forAttribute)
-        checkBokRefer.style.display = element.checked ? 'grid' : 'none'
-    })
-});
 
 buttonUrlConfirm.addEventListener('click', function() {
     const urlImageValue = document.querySelector('input#urlImage').value;
@@ -73,44 +59,92 @@ buttonView.addEventListener('click', function(){
 
 buttonConfirm.addEventListener('click', function(){
     const id = document.querySelector('input#id').value
-    const name = document.querySelector('input#name').value || null;
-    const stageName = document.querySelector('input#stageName').value || null;
-    const nationality = document.querySelector('input#nationality').value || null;
-    const birthDate = document.querySelector('input#birthDate').value || null;
-    const birthPlace = document.querySelector('input#birthPlace').value || null;
-    const isDeath = document.querySelector('input#isDeath').checked;
-    const deathDate = document.querySelector('input#deathDate').value || null;
-    const website = document.querySelector('input#website').value || null;
-    const description = document.querySelector('input#description').value || null;
-    const image = document.querySelector('input#image-string').value || null;
+    const title = document.getElementById('title').value || null;
+    const author = document.getElementById('author').value || null;
+    const genres_string = document.getElementById('genres').value || null;
+    const publishedAt_dateTime = document.getElementById('publishedAt').value || null;
+    const publisher = document.getElementById('publisher').value || null;
+    const totalPages= document.getElementById('totalPages').value || null;
+    const language = document.getElementById('language').value || null;
+    const description = document.getElementById('description').value || null;
+    const image = document.getElementById('image-string').value || null;
 
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-    if (name === null){
-        errorDiv.innerHTML = "Tên là bắt buộc"
+    if (!title){
+        errorDiv.innerHTML = "Tiêu đề sách không được để trống"
+        return
+    }
+    if (!author){
+        errorDiv.innerHTML = "Phải có ít nhất một tác giả"
         return
     }
 
-    const authorData = {
-        id,
-        name,
-        stageName,
-        nationality,
-        birthDate,
-        birthPlace,
-        ...(isDeath ? { deathDate } : {}), // Conditionally include deathDate
-        website,
-        description,
-        image,
-    };
+    if (!genres_string){
+        errorDiv.innerHTML = "Thể loại không được để trống"
+        return
+    }
+    if (!publishedAt_dateTime){
+        errorDiv.innerHTML = "Thời gian xuất bản sách không được để trống"
+        return
+    }
 
-    fetch('/admin/author/edit', {
+    if (!publisher){
+        errorDiv.innerHTML = "Nhà xuất bản không được để trống"
+        return
+    }
+    if (publisher.length < 5 || publisher.length >100){
+        errorDiv.innerHTML = "Tên nhà xuất bản phải nằm trong khoảng từ 5 - 100 kí tự"
+        return
+    }
+
+    if (!totalPages){
+        errorDiv.innerHTML = "Số trang không được để trống"
+        return
+    }
+
+    if (!language){
+        errorDiv.innerHTML = "Ngôn ngữ không được để trống"
+        return
+    }
+
+    if (!description){
+        errorDiv.innerHTML = "Miêu tả không được để trống"
+        return
+    }
+
+    if (!image){
+        errorDiv.innerHTML = "Hình ảnh không được để trống"
+        return
+    }
+
+    const genres = genres_string.split(',').map(item=>item.trim())
+    const publishedAt_date = new Date(publishedAt_dateTime)
+    const publishedAt = Math.floor(publishedAt_date.getTime() / 1000)
+    // Create a data object
+    const bookData = {
+        id: id,
+        title: title,
+        authorIds: [parseInt(author)],
+        genres: genres,
+        publishedAt: publishedAt,
+        publisher: publisher,
+        totalPages: totalPages,
+        categories: [],
+        language: language,
+        description: description,
+        image: image
+    };
+    console.log(bookData)
+
+    // Send a POST request
+    fetch('/admin/book/edit', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': csrfToken
         },
-        body: JSON.stringify(authorData),
+        body: JSON.stringify(bookData),
     })
     .then(response => {
         if (!response.ok) {
@@ -118,7 +152,7 @@ buttonConfirm.addEventListener('click', function(){
             return
         }
         else{
-            window.location.href = '/admin/authors';
+            window.location.reload()
         }
     })
     .catch(error => {
