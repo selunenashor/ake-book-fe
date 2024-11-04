@@ -17,7 +17,6 @@
             <input type="text" name="q" class="search-input" id="search-input">
             <div class="buttons">
                 <button id="searchViaMeaning">Tìm kiếm theo ngữ nghĩa</button>
-                <button id="searchViaKeywords">Tìm kiếm thông thường</button>
             </div>
         </form>
     </div>

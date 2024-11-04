@@ -33,7 +33,9 @@
         gap: 32px 128px;
         width: 100%;
 
-        button{
+        a{
+            display: block;
+            width: 100%;
             background-color: transparent;
 
             &:hover{

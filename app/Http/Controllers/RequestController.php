@@ -80,6 +80,20 @@ class RequestController extends Controller
     }
 
     public function getBook($id){
+        $response = Http::get($this->server . '/api/books/details/'.$id);
+
+        $statusCode = $response->status();
+
+        if ($statusCode === 200) {
+            return response()->json([
+                'data' => $response->json()
+            ], 200);
+        } else {
+            return response()->json(['msg' => "An error occurred"], 500);
+        }
+    }
+
+    public function getBookAdmin($id){
         $response = Http::get($this->server . '/api/admin/books/'.$id);
 
         $statusCode = $response->status();
@@ -166,6 +180,19 @@ class RequestController extends Controller
     }
 
     public function getAuthor($id){
+        $response = Http::get($this->server . '/api/books/author/' . $id);
+        $statusCode = $response->status();
+        if ($statusCode === 200){
+            return response()->json([
+                'data' => $response->json()
+            ], 200);
+        }
+        else {
+            return response()->json(['msg' => "An error occurred"], 500);
+        }
+    }
+
+    public function getAuthorAdmin($id){
         $response = Http::get($this->server . '/api/admin/authors/' . $id);
         $statusCode = $response->status();
         if ($statusCode === 200){

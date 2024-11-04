@@ -56,35 +56,19 @@ class ViewController extends Controller
                 'keyword' => $keyword,
                 'username' => $request->session()->get('username')
             ]);
-
-            // if ($data["data"]["totalItems"] == 1){
-            //     if (is_null($data["data"]["author"])){
-            //         return view('anonymous.bookInfo',[
-            //             'data' => $data["data"]["bookDetail"],
-            //             'keyword' => $keyword,
-            //             'username' => $request->session()->get('username')
-            //         ]);
-            //     }
-            //     else{
-            //         return view('anonymous.authorInfo',[
-            //             'data' => $data["data"]["author"],
-            //             'keyword' => $keyword,
-            //             'username' => $request->session()->get('username')
-            //         ]);
-            //     }
-            // }
-            // else{
-            //     return view('anonymous.resultPage', [
-            //         'data' => $data["data"],
-            //         'keyword' => $keyword,
-            //         'username' => $request->session()->get('username')
-            //     ]);
-            // }
         }
     }
 
-    public function showBookInfoPage(){
-        return view('anonymous.bookInfo');
+    public function showBookInfoPage(Request $request, $id){
+        $response = $this->request_controller->getBook($id);
+        if ($response->status() === 200){
+            $data = json_decode($response->getContent(), true);
+            return view('anonymous.bookInfo',[
+                'data' => $data['data'],
+                'username' => $request->session()->get('username')
+            ]);
+        }
+
     }
 
     public function showArticleInfoPage(){
@@ -119,7 +103,7 @@ class ViewController extends Controller
         if(!$request->session()->get('accessToken')){
             return redirect()->route('login');
         }
-        $response1 = $this->request_controller->getBook($id);
+        $response1 = $this->request_controller->getBookAdmin($id);
         if ($response1->status() === 200){
             $data1 = json_decode($response1->getContent(), true);
         }
@@ -153,7 +137,7 @@ class ViewController extends Controller
         if(!$request->session()->get('accessToken')){
             return redirect()->route('login');
         }
-        $response = $this->request_controller->getAuthor($id);
+        $response = $this->request_controller->getAuthorAdmin($id);
         if ($response->status() === 200){
             $data = json_decode($response->getContent(), true);
         }

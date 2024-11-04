@@ -18,13 +18,12 @@
             <input type="text" name="q" class="search-input" id="search-input" value="<?php echo $keyword ?? ''?>">
             <div class="buttons">
                 <button id="searchViaMeaning">Tìm kiếm theo ngữ nghĩa</button>
-                <button id="searchViaKeywords">Tìm kiếm thông thường</button>
             </div>
         </form>
     </div>
     <div class="info">
         <div class="book_cover">
-            <img src="data:image/png;base64,<?php echo $data['image'] ?? ''?>" alt="Books Cover">
+            <img src="<?php echo $data['image'] ?? ''?>" alt="Books Cover">
         </div>
         <div class="book_info">
             <div class="info_tag">
@@ -33,7 +32,7 @@
             </div>
             <div class="info_tag">
                 <div class="label">Tác giả</div>
-                <div class="value"></div>
+                <div class="value"><?= $data['authors'][0]['name']?></div>
             </div>
             <div class="info_tag">
                 <div class="label">Ngôn ngữ</div>
