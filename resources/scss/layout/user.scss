@@ -61,8 +61,8 @@ $header-height: 60px;
                     text-decoration: none;
                     color: #333;
                     width: 100%;
-                    display: grid;
-                    grid-template-columns: 16px auto;
+                    display: flex;
+                    align-items: center;
                     gap: 16px
                 }
             }

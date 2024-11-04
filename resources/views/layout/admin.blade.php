@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
     @vite('resources/scss/layout/admin.scss')
+    @vite('resources/js/layout/adminjs.js')
     @vite('resources/js/app.js')
     @yield('scss')
 </head>
@@ -27,7 +28,7 @@
                         <a href="/admin/authors">Quản lí tác giả</a>
                     </li>
                     <li>
-                        <a href="">Đăng xuất</a>
+                        <a id="logout">Đăng xuất</a>
                     </li>
                 </ul>
             </div>

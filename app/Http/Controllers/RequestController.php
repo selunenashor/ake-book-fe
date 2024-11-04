@@ -22,6 +22,35 @@ class RequestController extends Controller
         return self::$instance;
     }
 
+    public function login(Request $request){
+        $response = Http::post($this->server . '/api/auth/login',[
+            'username' => $request->input('username'),
+            'password' => $request->input('password'),
+        ]);
+
+        $statusCode = $response->status();
+        if ($statusCode === 200) {
+            $accessToken = $response->json()["accessToken"];
+            $username = $response->json()['profile']["username"];
+            $request->session()->put('accessToken', $accessToken);
+            $request->session()->put('username', $username);
+            return response()->json([], 200);
+        } elseif ($statusCode === 400) {
+            return response()->json([
+                'msg' => "Username or/and password incorrect"
+            ], 400);
+        } else
+        {
+            return response()->json(['msg' => "An error occurred"], 500);
+        }
+    }
+
+    public function logout(Request $request){
+        $request->session()->forget('accessToken');
+        $request->session()->forget('username');
+        return response()->json([], 200);
+    }
+
     public function userSearch($keyword){
         $response = Http::get($this->server . '/api/books/search?keyword=' . $keyword);
 

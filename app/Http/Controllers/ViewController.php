@@ -19,8 +19,10 @@ class ViewController extends Controller
         return view('anonymous.login');
     }
 
-    public function showMainPage(){
-        return view('anonymous.searchPage');
+    public function showMainPage(Request $request){
+        return view('anonymous.searchPage',[
+            'username' => $request->session()->get('username')
+        ]);
     }
 
     public function showResultPage(Request $request){
@@ -32,20 +34,23 @@ class ViewController extends Controller
                 if (is_null($data["data"]["author"])){
                     return view('anonymous.bookInfo',[
                         'data' => $data["data"]["bookDetail"],
-                        'keyword' => $keyword
+                        'keyword' => $keyword,
+                        'username' => $request->session()->get('username')
                     ]);
                 }
                 else{
                     return view('anonymous.authorInfo',[
                         'data' => $data["data"]["author"],
-                        'keyword' => $keyword
+                        'keyword' => $keyword,
+                        'username' => $request->session()->get('username')
                     ]);
                 }
             }
             else{
                 return view('anonymous.resultPage', [
                     'data' => $data["data"],
-                    'keyword' => $keyword
+                    'keyword' => $keyword,
+                    'username' => $request->session()->get('username')
                 ]);
             }
         }
@@ -63,11 +68,10 @@ class ViewController extends Controller
         return view('user.info');
     }
 
-    public function showUserFavorite(){
-        return view('user.favorite');
-    }
-
-    public function showAdminBooks(){
+    public function showAdminBooks(Request $request){
+        if(!$request->session()->get('accessToken')){
+            return redirect()->route('login');
+        }
         $response1 = $this->request_controller->getAllBooks();
         if ($response1->status() === 200){
             $data1 = json_decode($response1->getContent(), true);
@@ -84,7 +88,10 @@ class ViewController extends Controller
         ]);
     }
 
-    public function showAdminBookInfo($id){
+    public function showAdminBookInfo(Request $request, $id){
+        if(!$request->session()->get('accessToken')){
+            return redirect()->route('login');
+        }
         $response1 = $this->request_controller->getBook($id);
         if ($response1->status() === 200){
             $data1 = json_decode($response1->getContent(), true);
@@ -101,7 +108,10 @@ class ViewController extends Controller
         ]);
     }
 
-    public function showAuthors(){
+    public function showAdminAuthors(Request $request){
+        if(!$request->session()->get('accessToken')){
+            return redirect()->route('login');
+        }
         $response = $this->request_controller->getAllAuthors();
         if ($response->status() === 200){
             $data = json_decode($response->getContent(), true);
@@ -112,7 +122,10 @@ class ViewController extends Controller
         ]);
     }
 
-    public function showAuthorInfo($id){
+    public function showAdminAuthorInfo(Request $request, $id){
+        if(!$request->session()->get('accessToken')){
+            return redirect()->route('login');
+        }
         $response = $this->request_controller->getAuthor($id);
         if ($response->status() === 200){
             $data = json_decode($response->getContent(), true);
