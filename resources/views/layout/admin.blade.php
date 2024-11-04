@@ -16,7 +16,7 @@
         <div class="sidebar">
             <div class="logo-container">
                 <a href="/admin/">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png" alt="Image" class="logo">
+                    <img src="{{Vite::asset('resources/img/logo_white.png')}}" alt="Image" class="logo">
                 </a>
             </div>
             <div class="menu-container">

@@ -17,7 +17,7 @@
 
         <div class="homePage">
             <a href="/">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png" alt="Image" class="logo">
+                <img src="{{Vite::asset('resources/img/logo_white.png')}}" alt="Image" class="logo">
             </a>
         </div>
         @if ($username)
