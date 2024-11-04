@@ -114,7 +114,7 @@ buttonBookConfirm.addEventListener('click', function() {
         publishedAt: publishedAt,
         publisher: publisher,
         totalPages: totalPages,
-        categories: [],
+        categories: ["random"],
         language: language,
         description: description,
         image: image

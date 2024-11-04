@@ -41,7 +41,7 @@ class RequestController extends Controller
             ], 400);
         } else
         {
-            return response()->json(['msg' => "An error occurred"], 500);
+            dd($response);
         }
     }
 

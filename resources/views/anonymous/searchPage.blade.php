@@ -8,10 +8,6 @@
     <title>Main Page</title>
 @endsection
 
-@section('username')
-    ptk771
-@endsection
-
 @section('content')
     <div class="container">
         <div class="img_container">

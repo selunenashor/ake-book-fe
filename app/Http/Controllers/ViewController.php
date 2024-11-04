@@ -30,29 +30,56 @@ class ViewController extends Controller
         $response = $this->request_controller->userSearch($keyword);
         if($response->status() === 200){
             $data = json_decode($response->getContent(), true);
-            if ($data["data"]["totalItems"] == 1){
-                if (is_null($data["data"]["author"])){
-                    return view('anonymous.bookInfo',[
-                        'data' => $data["data"]["bookDetail"],
-                        'keyword' => $keyword,
-                        'username' => $request->session()->get('username')
-                    ]);
-                }
-                else{
-                    return view('anonymous.authorInfo',[
-                        'data' => $data["data"]["author"],
-                        'keyword' => $keyword,
-                        'username' => $request->session()->get('username')
-                    ]);
-                }
-            }
-            else{
-                return view('anonymous.resultPage', [
+            if ($data["data"]["data"]){
+                return view('anonymous.resultPage',[
                     'data' => $data["data"],
                     'keyword' => $keyword,
                     'username' => $request->session()->get('username')
                 ]);
             }
+            if ($data["data"]["bookDetail"]){
+                return view('anonymous.bookInfo',[
+                    'data' => $data["data"]["bookDetail"],
+                    'keyword' => $keyword,
+                    'username' => $request->session()->get('username')
+                ]);
+            }
+            if ($data["data"]["author"]){
+                return view('anonymous.authorInfo',[
+                    'data' => $data["data"]["author"],
+                    'keyword' => $keyword,
+                    'username' => $request->session()->get('username')
+                ]);
+            }
+            return view('anonymous.resultPage',[
+                'data' => ['data' => []],
+                'keyword' => $keyword,
+                'username' => $request->session()->get('username')
+            ]);
+
+            // if ($data["data"]["totalItems"] == 1){
+            //     if (is_null($data["data"]["author"])){
+            //         return view('anonymous.bookInfo',[
+            //             'data' => $data["data"]["bookDetail"],
+            //             'keyword' => $keyword,
+            //             'username' => $request->session()->get('username')
+            //         ]);
+            //     }
+            //     else{
+            //         return view('anonymous.authorInfo',[
+            //             'data' => $data["data"]["author"],
+            //             'keyword' => $keyword,
+            //             'username' => $request->session()->get('username')
+            //         ]);
+            //     }
+            // }
+            // else{
+            //     return view('anonymous.resultPage', [
+            //         'data' => $data["data"],
+            //         'keyword' => $keyword,
+            //         'username' => $request->session()->get('username')
+            //     ]);
+            // }
         }
     }
 

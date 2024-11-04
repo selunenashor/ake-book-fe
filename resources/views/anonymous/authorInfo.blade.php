@@ -5,11 +5,7 @@
 @endsection
 
 @section('title')
-    <title>Nhà văn Nguyễn Nhật Ánh</title>
-@endsection
-
-@section('username')
-    ptk771
+    <title>Tác giả <?= $data['name'] ?? '' ?></title>
 @endsection
 
 @section('content')
@@ -22,44 +18,45 @@
             </div>
         </form>
     </div>
-    <div class="favourite">
-        <button class="marked">
-            <i class="fa-regular fa-star"></i>
-            Huỷ đánh dấu yêu thích
-        </button>
-    </div>
     <div class="info">
         <div class="avatar">
-            <img src="https://www.nxbtre.com.vn/Images/Writer/nxbtre_thumb_30552016_085555.jpg" alt="Avatar">
+            <img src="<?= $data['image'] ?? '' ?>" alt="Avatar">
         </div>
         <div class="author_info">
             <div class="info_tag">
                 <div class="label">Họ tên</div>
-                <div class="value">Nguyễn Nhật Ánh</div>
+                <div class="value"><?= $data['name'] ?? '' ?></div>
+            </div>
+            <div class="info_tag">
+                <div class="label">Bí danh</div>
+                <div class="value"><?= $data['stageName'] ?? '' ?></div>
             </div>
             <div class="info_tag">
                 <div class="label">Quốc tịch</div>
-                <div class="value">Việt Nam</div>
+                <div class="value"><?= $data['nationality'] ?? '' ?></div>
             </div>
             <div class="info_tag">
-                <div class="label">Năm sinh</div>
-                <div class="value">1955</div>
+                <div class="label">Ngày sinh</div>
+                <div class="value"><?= $data['birthDate'] ?? '' ?></div>
             </div>
             <div class="info_tag">
-                <div class="label">Quê quán</div>
-                <div class="value">Bình Quế, Thăng Bình, Quảng Nam, Việt Nam</div>
+                <div class="label">Nơi sinh</div>
+                <div class="value"><?= $data['birthPlace'] ?? '' ?></div>
             </div>
-            <div class="info_tag">
-                <div class="label">Các tác phẩm</div>
-                <div class="value">
-                    <a href="">Chuyện cổ tích dành cho người lớn (tập truyện, 1987)</a><br>
-                    <a href="">Cô gái đến từ hôm qua (truyện dài, 1989)</a><br>
-                    <a href="">Kính vạn hoa (bộ truyện 54 tập, 1995-2010)</a><br>
-                    <a href="">Tôi thấy hoa vàng trên cỏ xanh (truyện dài, 2010)</a><br>
-                    <a href="">Có hai con mèo ngồi bên cửa sổ (truyện dài, 2012)</a><br>
+            @if ($data['deathDate'])
+                <div class="info_tag">
+                    <div class="label">Ngày mất</div>
+                    <div class="value"><?= $data['deathDate'] ?? '' ?></div>
                 </div>
+            @endif
+            <div class="info_tag">
+                <div class="label">Website</div>
+                <div class="value"><?= $data['website'] ?? '' ?></div>
             </div>
-
+            <div class="info_tag">
+                <div class="label">Mô tả</div>
+                <div class="value"><?= $data['description'] ?? '' ?></div>
+            </div>
         </div>
     </div>
 @endsection

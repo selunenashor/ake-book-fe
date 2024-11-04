@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-    <title>Giáo Trình Triết Học Marx - Lenin</title>
+    <title><?= $data['title'] ?></title>
 @endsection
 
 @section('username')
@@ -21,12 +21,6 @@
                 <button id="searchViaKeywords">Tìm kiếm thông thường</button>
             </div>
         </form>
-    </div>
-    <div class="favourite">
-        <button class="unmark">
-            <i class="fa-solid fa-star"></i>
-            Đánh dấu là yêu thích
-        </button>
     </div>
     <div class="info">
         <div class="book_cover">
@@ -49,30 +43,16 @@
                 <div class="label">Thể loại</div>
                 <div class="value">
                     <?php
-                        $c = count($data['genres']);
                         $string = "";
-                        foreach ($data['genres'] as $genre) {
-                            $string .= $genre;
-                            $c-=1;
-                            if ($c!==0){
-                                $string .= ", ";
-                            }
-                        }
-                        echo $string;
-                    ?>
-                </div>
-            </div>
-            <div class="info_tag">
-                <div class="label">Phân loại</div>
-                <div class="value">
-                    <?php
-                        $c = count($data['categories']);
-                        $string = "";
-                        foreach ($data['categories'] as $category) {
-                            $string .= $category;
-                            $c-=1;
-                            if ($c!==0){
-                                $string .= ", ";
+                        if ($data['genres']){
+                            $c = count($data['genres']);
+
+                            foreach ($data['genres'] as $genre) {
+                                $string .= $genre;
+                                $c-=1;
+                                if ($c!==0){
+                                    $string .= ", ";
+                                }
                             }
                         }
                         echo $string;
@@ -85,7 +65,19 @@
             </div>
             <div class="info_tag">
                 <div class="label">Thời gian phát hành</div>
-                <div class="value"><?php echo $data['publicationTime']  ?? ''?></div>
+                <div class="value">
+                    <?php
+
+                    if($data['publicationTime']){
+                        $unixTimestamp = $data['publicationTime'];
+                        $formattedDate = date('H:i d-m-Y', $unixTimestamp);
+                        echo $formattedDate;
+                    }
+                    else {
+                        echo '';
+                    }
+                    ?>
+                </div>
             </div>
             <div class="info_tag">
                 <div class="label">Số trang</div>
