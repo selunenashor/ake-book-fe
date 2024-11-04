@@ -68,8 +68,8 @@ Lúc này trên Terminal sẽ hiển thị URL của project (mặc định là 
 :white_check_mark: CRUD Book - Admin  
 :white_check_mark: CRUD Author - Admin  
 :white_check_mark: Login - Logout - Authen/Author  
+:white_check_mark: Detail Book - User  
+:white_check_mark: Detail Author - User  
 ## Đang hoàn thiện
 :o: Pagination  
-:o: Filter - Admin  
-:o: Detail Book  
-:o: Detail Author  
+:o: Filter - Admin   
