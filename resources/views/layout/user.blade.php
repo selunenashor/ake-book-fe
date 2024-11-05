@@ -17,7 +17,7 @@
 
         <div class="homePage">
             <a href="/">
-                <img src="{{Vite::asset('resources/img/logo_white.png')}}" alt="Image" class="logo">
+                <img src="{{Vite::asset('resources/img/logo_header.png')}}" alt="Image" class="logo">
             </a>
         </div>
         @if ($username)

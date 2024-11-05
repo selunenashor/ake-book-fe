@@ -16,7 +16,7 @@
         <div class="sidebar">
             <div class="logo-container">
                 <a href="/admin/">
-                    <img src="{{Vite::asset('resources/img/logo_white.png')}}" alt="Image" class="logo">
+                    <img src="{{Vite::asset('resources/img/logo_header.png')}}" alt="Image" class="logo">
                 </a>
             </div>
             <div class="menu-container">
