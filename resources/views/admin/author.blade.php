@@ -10,18 +10,6 @@ Quản lí tác giả
 
 @section('content')
 <div class="manage-author-container">
-    <div class="search-field">
-        <div class="col">
-            <div class="text-input">
-                <div class="input-label">Tên tác giả</div>
-                <div class="input-zone">
-                    <input type="text">
-                </div>
-            </div>
-        </div>
-        <div class="col">
-        </div>
-    </div>
     <div class="add-author">
         <button id="add-author-button" data-bs-toggle="modal" data-bs-target="#addAuthorModal">
             Thêm tác giả...

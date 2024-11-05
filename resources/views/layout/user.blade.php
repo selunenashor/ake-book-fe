@@ -36,7 +36,7 @@
                 <li>
                     <a href="/admin/authors">
                         <i class="fa-regular fa-id-badge"></i>
-                        Thông tin cá nhân
+                        Quản lí người dùng
                     </a>
                 </li>
                 <li>

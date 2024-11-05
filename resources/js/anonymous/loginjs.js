@@ -1,4 +1,13 @@
 const login = document.querySelector('button#login')
+const inputField = document.querySelectorAll('input')
+
+inputField.forEach(element => {
+    element.addEventListener('keydown', function(event){
+        if (event.key === 'Enter'){
+            login.click()
+        }
+    })
+});
 
 login.addEventListener('click', function () {
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');

@@ -21,11 +21,15 @@
             </div>
             <div class="menu-container">
                 <ul>
+
                     <li class="<?php if($menu_selected === 1) {echo 'selected';} ?>">
                         <a href="/admin/books">Quản lí sách</a>
                     </li>
                     <li class="<?php if($menu_selected === 2) {echo 'selected';} ?>">
                         <a href="/admin/authors">Quản lí tác giả</a>
+                    </li>
+                    <li>
+                        <a href="/">Về trang chủ</a>
                     </li>
                     <li>
                         <a id="logout">Đăng xuất</a>
